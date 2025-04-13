@@ -36,13 +36,13 @@ app.add_middleware(
 )
 
 
-@app.get("/api/tasks/{tg_id}")
+@app.get("/api/tasks/f{tg_id}")
 async def tasks(tg_id: int):
     user = await rq.add_user(tg_id)
     return await rq.get_tasks(user.id)
 
 
-@app.get("/api/main/{tg_id}")
+@app.get("/api/main/f{tg_id}")
 async def profile(tg_id: int):
     user = await rq.add_user(tg_id)
     completed_tasks_count = await rq.get_completed_tasks_count(user.id)
